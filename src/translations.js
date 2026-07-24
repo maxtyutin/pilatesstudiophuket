@@ -23,7 +23,9 @@ export const translations = {
       stat3Val: "100%",
       stat3Lbl: "Certified Master Trainers",
       stat4Val: "Free",
-      stat4Lbl: "Herbal Tea Bar"
+      stat4Lbl: "Herbal Tea Bar",
+      teaTitle: "Organic Tea & Relaxation Lounge",
+      teaSub: "Included after every session"
     },
     whyUs: {
       tag: "The Maison Experience",
@@ -54,6 +56,11 @@ export const translations = {
       bookAction: "Book This Class",
       level: "Level",
       duration: "Duration",
+      durationHour: "1 HOUR",
+      durationMin: "50 MIN",
+      badgeReformer: "REFORMER + CADILLAC",
+      badgePosture: "POSTURE & SPINE",
+      badgeCortisol: "LOW CORTISOL",
       prog1Title: "Group Reformer Pilates",
       prog1Desc: "50-minute full-body toning session focusing on deep core, glutes, and posture (Max 6 clients per class).",
       prog2Title: "Private 1:1 Pilates",
@@ -82,13 +89,18 @@ export const translations = {
       privateTitle: "PRIVATE 1:1 SESSIONS (1 HOUR)",
       seatsLeft: "seats left out of 6",
       fullyBooked: "Fully Booked",
-      reserveBtn: "Book Now"
+      reserveBtn: "Book Now",
+      trialPrice: "Trial 1,590 THB",
+      vipSession: "1:1 VIP Session",
+      reformerCadillac: "Reformer + Cadillac"
     },
     pricing: {
       tag: "Passes & Pricing",
       title: "Invest in Your Physical Well-being",
       subtitle: "Flexible passes designed for travelers, expats, and Phuket residents.",
       popularBadge: "BEST VALUE",
+      firstTimerTrial: "FIRST TIMER TRIAL",
+      firstTimerPrivate: "FIRST TIMER PRIVATE",
       plan1Title: "First Timer Group Trial",
       plan1Price: "490 THB",
       plan1Old: "1,200 THB",
@@ -107,6 +119,7 @@ export const translations = {
     },
     modal: {
       title: "Book Your Class at Maison 14",
+      subtitle: "First Timer Group Trial: 490 THB | Private Trial: 1,590 THB",
       step1Title: "1. Select Class Type",
       goal1: "Group Reformer (First Timer 490 THB)",
       goal2: "Private 1:1 Session (First Timer 1,590 THB)",
@@ -119,7 +132,12 @@ export const translations = {
       submitBtn: "Confirm Reservation",
       successTitle: "Reservation Request Sent!",
       successDesc: "Our team will contact you via WhatsApp or Phone (+66 94 593 2245) shortly to confirm your spot.",
-      closeBtn: "Done"
+      closeBtn: "Done",
+      group: "Group",
+      private: "Private 1:1",
+      sending: "Sending reservation...",
+      languageLabel: "LANGUAGE",
+      whatsappBtn: "WhatsApp Chat"
     },
     reviews: {
       tag: "Client Stories",
@@ -157,7 +175,8 @@ export const translations = {
       waVal: "Click to chat on WhatsApp",
       hoursTitle: "Opening Hours",
       hoursText: "Monday – Sunday: 08:00 – 20:00",
-      mapPlaceholder: "Google Maps Location: 274/1 Yaowarad Rd, Ratsada, Mueang Phuket"
+      mapPlaceholder: "Google Maps Location: 274/1 Yaowarad Rd, Ratsada, Mueang Phuket",
+      openMap: "Open Google Maps Location"
     },
     footer: {
       tagline: "Strong Body • Calm Mind • Confident You. A boutique Pilates and yoga studio in Phuket.",
@@ -188,7 +207,9 @@ export const translations = {
       stat3Val: "100%",
       stat3Lbl: "Сертифицированные тренеры",
       stat4Val: "Бесплатно",
-      stat4Lbl: "Травяной чай-бар"
+      stat4Lbl: "Травяной чай-бар",
+      teaTitle: "Чайная зона и отдых",
+      teaSub: "Бесплатно после каждого занятия"
     },
     whyUs: {
       tag: "Концепция Maison",
@@ -219,6 +240,11 @@ export const translations = {
       bookAction: "Записаться на класс",
       level: "Уровень",
       duration: "Длительность",
+      durationHour: "1 ЧАС",
+      durationMin: "50 МИН",
+      badgeReformer: "РЕФОРМЕР + КАДИЛЛАК",
+      badgePosture: "ОСАНКА И ПОЗВОНОЧНИК",
+      badgeCortisol: "МЯГКИЙ КОРТИЗОЛ",
       prog1Title: "Групповой Reformer Pilates",
       prog1Desc: "50-минутное занятие на все тело для подтяжки глубокого кора, ягодиц и формирования осанки (До 6 человек).",
       prog2Title: "Персональная 1:1 Pilates",
@@ -247,13 +273,18 @@ export const translations = {
       privateTitle: "ПЕРСОНАЛЬНЫЕ ЗАНЯТИЯ 1:1 (1 ЧАС)",
       seatsLeft: "мест осталось из 6",
       fullyBooked: "Запись закрыта",
-      reserveBtn: "Забронировать"
+      reserveBtn: "Забронировать",
+      trialPrice: "Пробный 1,590 THB",
+      vipSession: "1:1 VIP Сессия",
+      reformerCadillac: "Реформер + Кадиллак"
     },
     pricing: {
       tag: "Абонементы и стоимость",
       title: "Инвестиция в ваше самочувствие",
       subtitle: "Гибкие тарифы для гостей острова, экспатов и жителей Пхукета.",
       popularBadge: "ВЫГОДНЫЙ ВЫБОР",
+      firstTimerTrial: "ПЕРВЫЙ ГРУППОВОЙ ПРОБНЫЙ",
+      firstTimerPrivate: "ПЕРВЫЙ ПЕРСОНАЛЬНЫЙ ПРОБНЫЙ",
       plan1Title: "Пробное групповое занятие",
       plan1Price: "490 THB",
       plan1Old: "1,200 THB",
@@ -272,6 +303,7 @@ export const translations = {
     },
     modal: {
       title: "Запись на занятие в Maison 14",
+      subtitle: "Пробный групповой урок: 490 THB | Персональный: 1,590 THB",
       step1Title: "1. Выберите формат",
       goal1: "Групповой Reformer (Пробное 490 THB)",
       goal2: "Персональное 1:1 (Пробное 1,590 THB)",
@@ -284,7 +316,12 @@ export const translations = {
       submitBtn: "Забронировать место",
       successTitle: "Заявка успешно отправлена!",
       successDesc: "Наш администратор свяжется с вами в WhatsApp или по телефону (+66 94 593 2245) в ближайшее время.",
-      closeBtn: "Отлично"
+      closeBtn: "Отлично",
+      group: "Группа",
+      private: "Персональный 1:1",
+      sending: "Отправка бронирования...",
+      languageLabel: "ЯЗЫК",
+      whatsappBtn: "Чат WhatsApp"
     },
     reviews: {
       tag: "Отзывы",
@@ -322,7 +359,8 @@ export const translations = {
       waVal: "Открыть чат WhatsApp",
       hoursTitle: "Время работы",
       hoursText: "Понедельник – Воскресенье: 08:00 – 20:00",
-      mapPlaceholder: "Карта: 274/1 Yaowarad Rd, Ratsada, Mueang Phuket"
+      mapPlaceholder: "Карта: 274/1 Yaowarad Rd, Ratsada, Mueang Phuket",
+      openMap: "Открыть в Google Maps"
     },
     footer: {
       tagline: "Strong Body • Calm Mind • Confident You. Бутик-студия пилатеса и йоги на Пхукете.",
@@ -353,7 +391,9 @@ export const translations = {
       stat3Val: "100%",
       stat3Lbl: "国际认证导师",
       stat4Val: "免费",
-      stat4Lbl: "草本茶饮"
+      stat4Lbl: "草本茶饮",
+      teaTitle: "草本茶饮休息区",
+      teaSub: "每节课后免费提供"
     },
     whyUs: {
       tag: "Maison 哲学",
@@ -384,6 +424,11 @@ export const translations = {
       bookAction: "预约此课程",
       level: "难度等级",
       duration: "时长",
+      durationHour: "1 小时",
+      durationMin: "50 分钟",
+      badgeReformer: "芯体机 + 加迪拉克",
+      badgePosture: "脊柱与体态",
+      badgeCortisol: "低皮质醇",
       prog1Title: "团课 Reformer 塑形",
       prog1Desc: "50分钟全身深层核心激活与肌肉线条拉长（每班严格限额6人）。",
       prog2Title: "私教一对一 1:1 Pilates",
@@ -412,13 +457,18 @@ export const translations = {
       privateTitle: "私教一对一 (1小时)",
       seatsLeft: "剩余席位 (限6人)",
       fullyBooked: "已约满",
-      reserveBtn: "立即预订"
+      reserveBtn: "立即预订",
+      trialPrice: "首次体验 1,590 THB",
+      vipSession: "1:1 VIP 私教",
+      reformerCadillac: "芯体机 + 加迪拉克"
     },
     pricing: {
       tag: "会员方案",
       title: "为健康与优雅体态投资",
       subtitle: "灵活卡包，满足不同阶段练习需求。",
       popularBadge: "超值推荐",
+      firstTimerTrial: "首次体验团课",
+      firstTimerPrivate: "首次体验私教",
       plan1Title: "首次体验团课",
       plan1Price: "490 THB",
       plan1Old: "1,200 THB",
@@ -437,6 +487,7 @@ export const translations = {
     },
     modal: {
       title: "预约 Maison 14 课程",
+      subtitle: "首次体验团课：490 THB | 私教：1,590 THB",
       step1Title: "1. 选择课程类型",
       goal1: "芯体机团课 (首次体验 490 THB)",
       goal2: "私教一对一 (首次体验 1,590 THB)",
@@ -449,12 +500,17 @@ export const translations = {
       submitBtn: "确认预约席位",
       successTitle: "预约申请已发送！",
       successDesc: "客服人员将尽快通过 WhatsApp 或电话联系您确认课程席位。",
-      closeBtn: "完成"
+      closeBtn: "完成",
+      group: "团课",
+      private: "私教",
+      sending: "正在发送预约...",
+      languageLabel: "语言",
+      whatsappBtn: "WhatsApp 咨询"
     },
     reviews: {
       tag: "学员声音",
       title: "来自普吉岛会员的好评",
-      rev1: "位于 Ratsada 的最美普拉提馆！优雅环境与专注身体的感受非常棒！",
+      rev1: "位于 Ratsada 的最美普拉提馆！优雅环境与专注身体 of Jeab & Anna 很棒！",
       rev1Author: "Sophia M. • 数字游民",
       rev2: "天然橡木器械、充足的阳光和天然草本茶，练习后腰痛明显改善！",
       rev2Author: "Anastasia K. • 岛上居民",
@@ -487,7 +543,8 @@ export const translations = {
       waVal: "点击开启 WhatsApp 对话",
       hoursTitle: "营业时间",
       hoursText: "周一至周日：08:00 – 20:00",
-      mapPlaceholder: "地图定位：274/1 Yaowarad Rd, Ratsada, Mueang Phuket"
+      mapPlaceholder: "地图定位：274/1 Yaowarad Rd, Ratsada, Mueang Phuket",
+      openMap: "在谷歌地图中打开"
     },
     footer: {
       tagline: "Strong Body • Calm Mind • Confident You. 普吉岛精品 Reformer 普拉提与瑜伽馆。",
@@ -507,7 +564,7 @@ export const translations = {
     },
     hero: {
       badge: "Maison 14 Pilates & Yoga • รัษฎา, ภูเก็ต",
-      title: "Strong Body. Calm Mind. Confident You.",
+      title: "ร่างกายแข็งแกร่ง จิตใจสงบ มั่นใจในตัวเอง",
       subtitle: "สตูดิโอพิลาทิสและโยคะที่ออกแบบเพื่อการดูแลร่างกายและจิตใจอย่างสมดุล ผสมผสานการเคลื่อนไหว การหายใจ และความแข็งแรง ในบรรยากาศที่อบอุ่นและเรียบหรู",
       ctaTrial: "จองคลาสทดลองเรียน (490 THB)",
       ctaTour: "ชมบรรยากาศสตูดิโอ",
@@ -518,7 +575,9 @@ export const translations = {
       stat3Val: "100%",
       stat3Lbl: "ครูผู้สอนรับรองระดับสากล",
       stat4Val: "ฟรี",
-      stat4Lbl: "ชาสมุนไพรออร์แกนิก"
+      stat4Lbl: "ชาสมุนไพรออร์แกนิก",
+      teaTitle: "มุมพักผ่อนและชาสมุนไพรออร์แกนิก",
+      teaSub: "ให้บริการฟรีหลังจบคลาส"
     },
     whyUs: {
       tag: "ปรัชญาของ Maison",
@@ -549,13 +608,18 @@ export const translations = {
       bookAction: "จองคลาสนี้",
       level: "ระดับ",
       duration: "ระยะเวลา",
-      prog1Title: "Group Reformer Pilates",
+      durationHour: "1 ชั่วโมง",
+      durationMin: "50 นาที",
+      badgeReformer: "REFORMER + CADILLAC",
+      badgePosture: "ปรับสรีระ & กระดูกสันหลัง",
+      badgeCortisol: "LOW CORTISOL",
+      prog1Title: "คลาสกลุ่ม Reformer Pilates",
       prog1Desc: "คลาสกลุ่ม 50 นาที สร้างความแข็งแรงของแกนกลางลำตัวและสรีระที่งดงาม (จำกัด 6 คน/คลาส)",
-      prog2Title: "Private 1:1 Pilates",
+      prog2Title: "คลาสส่วนตัว 1:1 Pilates",
       prog2Desc: "คลาสส่วนตัว 1 ชั่วโมง บน Reformer & Cadillac ออกแบบตามโครงสร้างร่างกายโดยเฉพาะ",
-      prog3Title: "Posture & Spine Alignment",
+      prog3Title: "ปรับบุคลิกภาพและสุขภาพกระดูกสันหลัง",
       prog3Desc: "คลาสปรับสมดุลสรีระ ยืดเหยียดหมอนรองกระดูก และลดอาการปวดหลังจากเกร็งสะสม",
-      prog4Title: "Low Cortisol & Lymphatic Flow",
+      prog4Title: "Low Cortisol และการไหลเวียนน้ำเหลือง",
       prog4Desc: "คลาสจังหวะนุ่มนวล ช่วยกระตุ้นระบบน้ำเหลือง ลดอาการบวมน้ำ และผ่อนคลายความเครียด"
     },
     instructors: {
@@ -563,10 +627,10 @@ export const translations = {
       title: "พบกับครู Jeab และครู Anna",
       subtitle: "ผู้ฝึกสอนที่ได้รับการรับรองระดับสากล พร้อมดูแลและใส่ใจในทุกรายละเอียด",
       inst1Name: "Jeab",
-      inst1Role: "Lead Reformer & Yoga Instructor",
+      inst1Role: "ครูสอน Reformer และโยคะหลัก",
       inst1Bio: "ผู้เชี่ยวชาญด้าน Reformer Pilates และโยคะ เน้นการปรับสรีระ การเกร็งแกนกลาง และการเคลื่อนไหวอย่างมีสติ",
       inst2Name: "Anna",
-      inst2Role: "Master Reformer & Posture Specialist",
+      inst2Role: "ผู้เชี่ยวชาญ Reformer และการปรับสรีระ",
       inst2Bio: "ผู้เชี่ยวชาญด้านพิลาทิสและการฟื้นฟูสรีระ เน้นการดูแลกระดูกสันหลัง การกระชับสัดส่วน และสมดุลร่างกาย"
     },
     schedule: {
@@ -577,13 +641,18 @@ export const translations = {
       privateTitle: "คลาสส่วนตัว 1:1 (1 ชั่วโมง)",
       seatsLeft: "ที่นั่งว่าง (จำกัด 6 คน)",
       fullyBooked: "เต็มแล้ว",
-      reserveBtn: "จองเลย"
+      reserveBtn: "จองเลย",
+      trialPrice: "ทดลองเรียน 1,590 THB",
+      vipSession: "คลาสส่วนตัว 1:1 VIP",
+      reformerCadillac: "Reformer + Cadillac"
     },
     pricing: {
       tag: "ราคาและแพ็กเกจ",
       title: "ลงทุนเพื่อสุขภาพและสรีระที่ดีของคุณ",
       subtitle: "แพ็กเกจยืดหยุ่นตอบโจทย์ทุกระดับ",
       popularBadge: "คุ้มค่าที่สุด",
+      firstTimerTrial: "ทดลองเรียนครั้งแรก",
+      firstTimerPrivate: "ทดลองเรียนส่วนตัวครั้งแรก",
       plan1Title: "ทดลองเรียนคลาสกลุ่มครั้งแรก",
       plan1Price: "490 THB",
       plan1Old: "1,200 THB",
@@ -602,6 +671,7 @@ export const translations = {
     },
     modal: {
       title: "จองคลาสเรียนที่ Maison 14",
+      subtitle: "คลาสกลุ่มทดลองครั้งแรก: 490 THB | คลาสส่วนตัว: 1,590 THB",
       step1Title: "1. เลือกรูปแบบคลาส",
       goal1: "คลาสกลุ่ม Reformer (ทดลองเรียน 490 THB)",
       goal2: "คลาสส่วนตัว 1:1 (ทดลองเรียน 1,590 THB)",
@@ -614,7 +684,12 @@ export const translations = {
       submitBtn: "ยืนยันการสำรองที่นั่ง",
       successTitle: "ส่งข้อมูลการจองเรียบร้อยแล้ว!",
       successDesc: "เจ้าหน้าที่ของเราจะติดต่อกลับทาง WhatsApp หรือโทรศัพท์ (+66 94 593 2245) เพื่อยืนยันที่นั่งโดยเร็วที่สุด",
-      closeBtn: "เสร็จสิ้น"
+      closeBtn: "เสร็จสิ้น",
+      group: "คลาสกลุ่ม",
+      private: "คลาสส่วนตัว",
+      sending: "กำลังส่งข้อมูลการจอง...",
+      languageLabel: "ภาษา",
+      whatsappBtn: "แชต WhatsApp"
     },
     reviews: {
       tag: "เสียงตอบรับ",
@@ -652,7 +727,8 @@ export const translations = {
       waVal: "คลิกเพื่อแชตทาง WhatsApp",
       hoursTitle: "เวลาทำการ",
       hoursText: "จันทร์ – อาทิตย์: 08:00 – 20:00 น.",
-      mapPlaceholder: "แผนที่ตำแหน่ง: 274/1 ถนนเยาวราช ต.รัษฎา อ.เมืองภูเก็ต"
+      mapPlaceholder: "แผนที่ตำแหน่ง: 274/1 ถนนเยาวราช ต.รัษฎา อ.เมืองภูเก็ต",
+      openMap: "เปิดใน Google Maps"
     },
     footer: {
       tagline: "Strong Body • Calm Mind • Confident You. สตูดิโอพิลาทิสและโยคะระดับบูทีคในภูเก็ต",

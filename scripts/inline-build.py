@@ -6,13 +6,20 @@ for offline file:// opening without any CORS or module-type restrictions.
 
 import re
 import os
+import shutil
 
 # Project root is one level up from this script
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 dist_dir = os.path.join(project_root, 'dist')
-html_path = os.path.join(dist_dir, 'index.html')
+
+# Vite outputs to index.template.html as configured in vite.config.js
+html_path = os.path.join(dist_dir, 'index.template.html')
 js_path = os.path.join(dist_dir, 'assets', 'index.js')
 css_path = os.path.join(dist_dir, 'assets', 'index.css')
+
+if not os.path.exists(html_path):
+    # Fallback to index.html if template doesn't exist
+    html_path = os.path.join(dist_dir, 'index.html')
 
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
@@ -49,7 +56,7 @@ css_content = re.sub(
 )
 css_content = css_content.strip()
 
-# Remove ALL external <link> tags (stylesheet + preconnect for Google Fonts)
+# Remove ALL external <link> tags (stylesheet + Google Fonts preconnect)
 html = re.sub(
     r'<link[^>]+(?:rel=["\']stylesheet["\']|fonts\.googleapis\.com|fonts\.gstatic\.com)[^>]*/?>',
     '',
@@ -59,23 +66,26 @@ html = re.sub(
 # Remove modulepreload links
 html = re.sub(r'<link[^>]+rel=["\']modulepreload["\'][^>]*/?>', '', html)
 
-# Remove ALL <script ...src=...> tags completely including closing </script>
-# This covers both self-closing and paired tags with src attributes
+# Remove ALL <script ...src=...></script> tags completely (Vite asset references)
 html = re.sub(
     r'<script\b[^>]*\bsrc=["\'][^"\']*["\'][^>]*>\s*</script>',
     '',
     html
 )
-# Also remove any self-closing variant
+# Also handle self-closing / void opening tags with src
 html = re.sub(
     r'<script\b[^>]*\bsrc=["\'][^"\']*["\'][^>]*/?>',
     '',
     html
 )
 
-# Remove any stray </script> closing tags that are NOT preceded by inline content
-# (i.e. standalone </script> with only whitespace before it on the line)
-html = re.sub(r'\n\s*</script>\s*\n', '\n', html)
+# Remove any remaining stray standalone </script> in the head/body area (stray ones)
+body_pos = html.find('</body>')
+if body_pos != -1:
+    head_and_body = html[:body_pos]
+    tail = html[body_pos:]
+    head_and_body = head_and_body.replace('</script>', '')
+    html = head_and_body + tail
 
 # Inject CSS before </head>
 if css_content:
@@ -84,7 +94,7 @@ if css_content:
 
 # Inject JS before </body> (no type="module", no crossorigin)
 if js_content:
-    js_tag = f'\n  <script>\n{js_content}\n  </script>'
+    js_tag = f'\n<script>\n{js_content}\n</script>'
     html = html.replace('</body>', js_tag + '\n</body>')
 
 # Verify final structure
@@ -96,13 +106,26 @@ print('Script open:', script_open, '| close:', script_close)
 print('type=module in output:', has_module)
 print('import.meta in output:', has_import_meta)
 
-# Write to dist/index.html and root index.html
-with open(html_path, 'w', encoding='utf-8') as f:
+# Write output to dist/index.html
+final_dist_html_path = os.path.join(dist_dir, 'index.html')
+with open(final_dist_html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 print(f'Written dist/index.html: {len(html)} bytes')
 
+# Write output to root index.html
 root_html_path = os.path.join(project_root, 'index.html')
 with open(root_html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 print(f'Written root index.html: {len(html)} bytes')
+
+# Clean up temporary build assets
+if os.path.exists(html_path) and html_path != final_dist_html_path:
+    os.remove(html_path)
+    print('Removed temporary index.template.html')
+
+assets_dir = os.path.join(dist_dir, 'assets')
+if os.path.exists(assets_dir):
+    shutil.rmtree(assets_dir)
+    print('Cleaned up assets directory from dist/')
+
 print('Done! Single-file HTML ready for offline file:// opening.')

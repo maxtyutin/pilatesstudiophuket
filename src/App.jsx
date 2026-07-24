@@ -207,7 +207,7 @@ export default function App() {
 
             {/* Book Trial Button */}
             <button className="btn-primary btn-header-cta" onClick={() => handleOpenBooking()}>
-              <span>Book Trial</span>
+              <span>{t.nav.bookBtn}</span>
             </button>
 
             {/* Hamburger Button for Mobile / Tablet */}
@@ -238,7 +238,7 @@ export default function App() {
 
             {/* Language Switcher in Mobile Drawer */}
             <div className="mobile-lang-row">
-              <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-muted)' }}>LANGUAGE:</span>
+              <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-muted)' }}>{t.modal.languageLabel}:</span>
               <div className="lang-switcher-header">
                 <button 
                   className={`lang-btn-header ${lang === 'en' ? 'active' : ''}`}
@@ -280,15 +280,56 @@ export default function App() {
               <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking()}>
                 {t.hero.ctaTrial}
               </button>
-              <div style={{ display: 'flex', gap: '12px', marginTop: '16px', justifyContent: 'center' }}>
-                <a href="tel:+66945932245" className="phone-link">
-                  <Phone size={14} /> +66 94 593 2245
+              <div style={{ marginTop: '16px', display: 'block' }}>
+                <a
+                  href="tel:+66945932245"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '12px 16px',
+                    background: 'var(--bg-secondary)',
+                    borderRadius: '12px',
+                    color: 'var(--text-primary)',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    border: '1px solid var(--border-light)',
+                    marginBottom: '10px'
+                  }}
+                >
+                  <Phone size={16} style={{ flexShrink: 0 }} />
+                  <span>+66 94-593-2245</span>
                 </a>
-                <a href="https://wa.me/66945932245" target="_blank" rel="noreferrer" className="phone-link">
-                  <MessageCircle size={14} /> WhatsApp
+                <a
+                  href="https://wa.me/66945932245"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '12px 16px',
+                    background: 'var(--bg-secondary)',
+                    borderRadius: '12px',
+                    color: 'var(--accent-green)',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    border: '1px solid var(--border-light)'
+                  }}
+                >
+                  <MessageCircle size={16} style={{ flexShrink: 0 }} />
+                  <span>{t.modal.whatsappBtn}</span>
                 </a>
               </div>
             </div>
+
+
           </div>
         </div>
       )}
@@ -346,8 +387,8 @@ export default function App() {
                 <Coffee size={20} />
               </div>
               <div>
-                <strong style={{ display: 'block', fontSize: '13px' }}>Organic Tea & Relaxation Lounge</strong>
-                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Included after every session</span>
+                <strong style={{ display: 'block', fontSize: '13px' }}>{t.hero.teaTitle}</strong>
+                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{t.hero.teaSub}</span>
               </div>
             </div>
           </div>
@@ -448,9 +489,9 @@ export default function App() {
             <div className="program-card reveal">
               <div>
                 <div className="program-meta">
-                  <span>{t.programs.duration}: 50 MIN</span>
+                  <span>{t.programs.duration}: {t.programs.durationMin}</span>
                   <span>•</span>
-                  <span>LIMITED TO 6 CLIENTS</span>
+                  <span>{t.programs.badgeGroupLimit}</span>
                 </div>
                 <h3>{t.programs.prog1Title}</h3>
                 <p>{t.programs.prog1Desc}</p>
@@ -463,9 +504,9 @@ export default function App() {
             <div className="program-card reveal delay-1">
               <div>
                 <div className="program-meta">
-                  <span>{t.programs.duration}: 1 HOUR</span>
+                  <span>{t.programs.duration}: {t.programs.durationHour}</span>
                   <span>•</span>
-                  <span>REFORMER + CADILLAC</span>
+                  <span>{t.programs.badgeReformer}</span>
                 </div>
                 <h3>{t.programs.prog2Title}</h3>
                 <p>{t.programs.prog2Desc}</p>
@@ -478,9 +519,9 @@ export default function App() {
             <div className="program-card reveal delay-2">
               <div>
                 <div className="program-meta">
-                  <span>{t.programs.duration}: 50 MIN</span>
+                  <span>{t.programs.duration}: {t.programs.durationMin}</span>
                   <span>•</span>
-                  <span>POSTURE & SPINE</span>
+                  <span>{t.programs.badgePosture}</span>
                 </div>
                 <h3>{t.programs.prog3Title}</h3>
                 <p>{t.programs.prog3Desc}</p>
@@ -493,9 +534,9 @@ export default function App() {
             <div className="program-card reveal delay-3">
               <div>
                 <div className="program-meta">
-                  <span>{t.programs.duration}: 50 MIN</span>
+                  <span>{t.programs.duration}: {t.programs.durationMin}</span>
                   <span>•</span>
-                  <span>LOW CORTISOL</span>
+                  <span>{t.programs.badgeCortisol}</span>
                 </div>
                 <h3>{t.programs.prog4Title}</h3>
                 <p>{t.programs.prog4Desc}</p>
@@ -545,7 +586,7 @@ export default function App() {
               <div>
                 <div className="schedule-block-header">
                   <span>{t.schedule.privateTitle}</span>
-                  <span style={{ fontSize: '13px', color: 'var(--accent-warm)' }}>Trial 1,590 THB</span>
+                  <span style={{ fontSize: '13px', color: 'var(--accent-warm)' }}>{t.schedule.trialPrice}</span>
                 </div>
                 <div className="slots-grid">
                   {privateScheduleSlots.map((slot, idx) => (
@@ -553,10 +594,10 @@ export default function App() {
                       <div>
                         <div className="slot-time">{slot.time}</div>
                         <div className="slot-title">{slot.title}</div>
-                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Reformer + Cadillac</div>
+                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{t.schedule.reformerCadillac}</div>
                       </div>
                       <div style={{ textAlign: 'right' }}>
-                        <div className="slot-seats" style={{ color: 'var(--accent-warm)' }}>1:1 VIP Session</div>
+                        <div className="slot-seats" style={{ color: 'var(--accent-warm)' }}>{t.schedule.vipSession}</div>
                         <button 
                           className="btn-primary" 
                           style={{ padding: '7px 16px', fontSize: '12px', marginTop: '6px' }}
@@ -616,7 +657,7 @@ export default function App() {
 
           <div className="pricing-grid">
             <div className="price-card reveal">
-              <span className="popular-tag">FIRST TIMER TRIAL</span>
+              <span className="popular-tag">{t.pricing.firstTimerTrial}</span>
               <div>
                 <h3>{t.pricing.plan1Title}</h3>
                 <div className="price-val">
@@ -633,7 +674,7 @@ export default function App() {
             </div>
 
             <div className="price-card reveal delay-1">
-              <span className="popular-tag">FIRST TIMER PRIVATE</span>
+              <span className="popular-tag">{t.pricing.firstTimerPrivate}</span>
               <div>
                 <h3>{t.pricing.plan2Title}</h3>
                 <div className="price-val">
@@ -802,7 +843,7 @@ export default function App() {
                 rel="noreferrer"
                 className="btn-primary"
               >
-                Open Google Maps Location
+                {t.contact.openMap}
               </a>
             </div>
           </div>
@@ -821,7 +862,7 @@ export default function App() {
               <>
                 <h3 style={{ fontSize: '28px', marginBottom: '8px' }}>{t.modal.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '24px' }}>
-                  First Timer Group Trial: <strong>490 THB</strong> | Private Trial: <strong>1,590 THB</strong>
+                  {t.modal.subtitle}
                 </p>
 
                 <form className="modal-form" onSubmit={handleFormSubmit}>
@@ -854,15 +895,15 @@ export default function App() {
                         value={bookingData.time}
                         onChange={e => setBookingData({ ...bookingData, time: e.target.value })}
                       >
-                        <option value="08:00 AM">08:00 AM (Group)</option>
-                        <option value="09:00 AM">09:00 AM (Group)</option>
-                        <option value="10:00 AM">10:00 AM (Group)</option>
-                        <option value="01:00 PM">01:00 PM (Private 1:1)</option>
-                        <option value="02:00 PM">02:00 PM (Private 1:1)</option>
-                        <option value="03:00 PM">03:00 PM (Private 1:1)</option>
-                        <option value="04:00 PM">04:00 PM (Group)</option>
-                        <option value="06:00 PM">06:00 PM (Group)</option>
-                        <option value="07:00 PM">07:00 PM (Group)</option>
+                        <option value="08:00 AM">08:00 AM ({t.modal.group})</option>
+                        <option value="09:00 AM">09:00 AM ({t.modal.group})</option>
+                        <option value="10:00 AM">10:00 AM ({t.modal.group})</option>
+                        <option value="01:00 PM">01:00 PM ({t.modal.private})</option>
+                        <option value="02:00 PM">02:00 PM ({t.modal.private})</option>
+                        <option value="03:00 PM">03:00 PM ({t.modal.private})</option>
+                        <option value="04:00 PM">04:00 PM ({t.modal.group})</option>
+                        <option value="06:00 PM">06:00 PM ({t.modal.group})</option>
+                        <option value="07:00 PM">07:00 PM ({t.modal.group})</option>
                       </select>
                     </div>
                   </div>
@@ -895,7 +936,7 @@ export default function App() {
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 size={16} className="animate-spin" /> Sending reservation...
+                        <Loader2 size={16} className="animate-spin" /> {t.modal.sending}
                       </>
                     ) : (
                       t.modal.submitBtn

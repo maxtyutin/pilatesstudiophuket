@@ -331,7 +331,7 @@ h1, h2, h3, h4, .font-serif {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0;
   box-shadow: var(--shadow-hover);
   animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
@@ -376,7 +376,9 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .mobile-drawer-footer {
+  margin-top: auto;
   padding-top: 20px;
+  padding-bottom: 8px;
   border-top: 1px solid var(--border-light);
 }
 

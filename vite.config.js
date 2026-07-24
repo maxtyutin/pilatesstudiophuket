@@ -10,6 +10,9 @@ export default defineConfig({
     cssCodeSplit: false,
     modulePreload: false,
     rollupOptions: {
+      input: {
+        main: './index.template.html'
+      },
       output: {
         // single JS chunk
         inlineDynamicImports: true,
