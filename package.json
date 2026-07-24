@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node -e 'const fs=require(\"fs\"); let h=fs.readFileSync(\"dist/index.html\",\"utf8\").replace(/type=\"module\"/g, \"\").replace(/crossorigin/g, \"\").replace(/\\(function\\(\\)\\{let e=document\\.createElement\\(`link`\\)\\.relList[\\s\\S]*?fetch\\(e\\.href,n\\)\\}\\}\\)\\(\\);/g, \"\"); fs.writeFileSync(\"dist/index.html\", h); fs.writeFileSync(\"index.html\", h);'",
+    "build": "vite build && python3 scripts/inline-build.py",
     "lint": "oxlint",
     "preview": "vite preview"
   },
