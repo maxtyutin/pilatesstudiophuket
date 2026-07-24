@@ -74,18 +74,32 @@ h1, h2, h3, h4, .font-serif {
   padding: 0 24px;
 }
 
-/* Robust Keyframe Animations (Always Fallback Visible) */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+/* Scroll Reveal Animation Engine */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
+/* Keyframe Animations */
 @keyframes floatSlow {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -104,26 +118,6 @@ h1, h2, h3, h4, .font-serif {
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-/* Animation Classes applied to elements */
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-delay-1 { animation-delay: 0.15s; }
-.animate-delay-2 { animation-delay: 0.3s; }
-.animate-delay-3 { animation-delay: 0.45s; }
-
-/* Reveal on Scroll with Guaranteed Fallback */
-.reveal-on-scroll {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-on-scroll.is-visible {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Ultra Minimalist Compact Language Switcher in Header */
@@ -443,7 +437,6 @@ h1, h2, h3, h4, .font-serif {
   line-height: 1.05;
   margin-bottom: 26px;
   color: var(--text-primary);
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-desc {
@@ -451,7 +444,6 @@ h1, h2, h3, h4, .font-serif {
   color: var(--text-muted);
   margin-bottom: 40px;
   line-height: 1.65;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
 .hero-btns {
@@ -459,7 +451,6 @@ h1, h2, h3, h4, .font-serif {
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 48px;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 .hero-stats {
@@ -468,7 +459,6 @@ h1, h2, h3, h4, .font-serif {
   gap: 20px;
   padding-top: 34px;
   border-top: 1px solid var(--border-light);
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 .stat-item {
@@ -494,7 +484,6 @@ h1, h2, h3, h4, .font-serif {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-hover);
-  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .hero-img {
@@ -955,7 +944,6 @@ h1, h2, h3, h4, .font-serif {
   color: var(--text-muted);
   font-size: 15px;
   line-height: 1.65;
-  animation: fadeUp 0.3s ease;
 }
 
 /* Contact Grid */
@@ -1028,7 +1016,6 @@ h1, h2, h3, h4, .font-serif {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  animation: fadeUp 0.3s ease;
 }
 
 .modal-content {
@@ -1040,7 +1027,6 @@ h1, h2, h3, h4, .font-serif {
   position: relative;
   box-shadow: var(--shadow-hover);
   border: 1px solid var(--border-light);
-  animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-close {
@@ -1122,12 +1108,6 @@ h1, h2, h3, h4, .font-serif {
   padding-top: 32px;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
-}
-
-/* Modal Animations */
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 .animate-spin {

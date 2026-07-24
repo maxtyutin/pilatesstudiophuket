@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { translations } from './translations';
 import { 
   Phone, 
@@ -55,6 +55,25 @@ export default function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const t = translations[lang] || translations.en;
+
+  // Intersection Observer for Smooth Scroll Reveal Animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleOpenBooking = (goal = null) => {
     if (goal) setBookingData(prev => ({ ...prev, goal }));
@@ -191,7 +210,7 @@ export default function App() {
       <section className="hero-section">
         <div className="ambient-glow" style={{ top: '-100px', right: '-50px' }}></div>
         <div className="container hero-grid">
-          <div className="hero-text-col">
+          <div className="hero-text-col reveal">
             <div className="hero-badge">
               <Sparkles size={14} className="text-accent-warm" />
               <span>{t.hero.badge}</span>
@@ -229,7 +248,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="hero-media">
+          <div className="hero-media reveal delay-1">
             <img 
               src={getAssetUrl("images/hero.jpg")} 
               alt="Maison 14 Pilates Studio Interior" 
@@ -251,29 +270,29 @@ export default function App() {
       {/* Why Us Section */}
       <section id="benefits" className="section">
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.whyUs.tag}</span>
             <h2 className="section-title">{t.whyUs.title}</h2>
             <p className="section-subtitle">{t.whyUs.subtitle}</p>
           </div>
 
           <div className="why-grid">
-            <div className="why-card animate-fade-up">
+            <div className="why-card reveal">
               <div className="why-icon"><Activity size={26} /></div>
               <h3>{t.whyUs.item1Title}</h3>
               <p>{t.whyUs.item1Desc}</p>
             </div>
-            <div className="why-card animate-fade-up animate-delay-1">
+            <div className="why-card reveal delay-1">
               <div className="why-icon"><HeartHandshake size={26} /></div>
               <h3>{t.whyUs.item2Title}</h3>
               <p>{t.whyUs.item2Desc}</p>
             </div>
-            <div className="why-card animate-fade-up animate-delay-2">
+            <div className="why-card reveal delay-2">
               <div className="why-icon"><Users size={26} /></div>
               <h3>{t.whyUs.item3Title}</h3>
               <p>{t.whyUs.item3Desc}</p>
             </div>
-            <div className="why-card animate-fade-up animate-delay-3">
+            <div className="why-card reveal delay-3">
               <div className="why-icon"><Sparkles size={26} /></div>
               <h3>{t.whyUs.item4Title}</h3>
               <p>{t.whyUs.item4Desc}</p>
@@ -286,13 +305,13 @@ export default function App() {
       <section id="atmosphere" className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="ambient-glow" style={{ bottom: '-50px', left: '-50px' }}></div>
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.gallery.tag}</span>
             <h2 className="section-title">{t.gallery.title}</h2>
             <p className="section-subtitle">{t.gallery.subtitle}</p>
           </div>
 
-          <div className="gallery-tabs animate-fade-up animate-delay-1">
+          <div className="gallery-tabs reveal delay-1">
             <button 
               className={`gallery-tab-btn ${activeTab === 'tab1' ? 'active' : ''}`}
               onClick={() => setActiveTab('tab1')}
@@ -319,7 +338,7 @@ export default function App() {
             </button>
           </div>
 
-          <div className="gallery-display animate-fade-up animate-delay-2">
+          <div className="gallery-display reveal delay-2">
             <img 
               src={galleryImages[activeTab]} 
               alt="Maison 14 Studio Atmosphere" 
@@ -332,14 +351,14 @@ export default function App() {
       {/* Classes & Schedule Section */}
       <section id="classes" className="section">
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.programs.tag}</span>
             <h2 className="section-title">{t.programs.title}</h2>
             <p className="section-subtitle">{t.programs.subtitle}</p>
           </div>
 
           <div className="programs-grid" style={{ marginBottom: '60px' }}>
-            <div className="program-card animate-fade-up">
+            <div className="program-card reveal">
               <div>
                 <div className="program-meta">
                   <span>{t.programs.duration}: 50 MIN</span>
@@ -354,7 +373,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="program-card animate-fade-up animate-delay-1">
+            <div className="program-card reveal delay-1">
               <div>
                 <div className="program-meta">
                   <span>{t.programs.duration}: 1 HOUR</span>
@@ -369,7 +388,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="program-card animate-fade-up animate-delay-2">
+            <div className="program-card reveal delay-2">
               <div>
                 <div className="program-meta">
                   <span>{t.programs.duration}: 50 MIN</span>
@@ -384,7 +403,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="program-card animate-fade-up animate-delay-3">
+            <div className="program-card reveal delay-3">
               <div>
                 <div className="program-meta">
                   <span>{t.programs.duration}: 50 MIN</span>
@@ -401,7 +420,7 @@ export default function App() {
           </div>
 
           {/* Schedule Table */}
-          <div className="schedule-container animate-fade-up">
+          <div className="schedule-container reveal">
             <span className="section-tag">{t.schedule.tag}</span>
             <h3 style={{ fontSize: '32px', marginBottom: '8px' }}>{t.schedule.title}</h3>
             <p style={{ color: 'var(--text-muted)', marginBottom: '32px' }}>{t.schedule.subtitle}</p>
@@ -471,14 +490,14 @@ export default function App() {
       {/* Instructors Section (Jeab & Anna) */}
       <section id="instructors" className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.instructors.tag}</span>
             <h2 className="section-title">{t.instructors.title}</h2>
             <p className="section-subtitle">{t.instructors.subtitle}</p>
           </div>
 
           <div className="instructors-grid">
-            <div className="instructor-card animate-fade-up">
+            <div className="instructor-card reveal">
               <img src={getAssetUrl("images/instructor_jeab.jpg")} alt={t.instructors.inst1Name} className="instructor-img" />
               <div className="instructor-body">
                 <h3>{t.instructors.inst1Name}</h3>
@@ -487,7 +506,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="instructor-card animate-fade-up animate-delay-1">
+            <div className="instructor-card reveal delay-1">
               <img src={getAssetUrl("images/instructor_anna.jpg")} alt={t.instructors.inst2Name} className="instructor-img" />
               <div className="instructor-body">
                 <h3>{t.instructors.inst2Name}</h3>
@@ -502,14 +521,14 @@ export default function App() {
       {/* Pricing Section */}
       <section id="pricing" className="section">
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.pricing.tag}</span>
             <h2 className="section-title">{t.pricing.title}</h2>
             <p className="section-subtitle">{t.pricing.subtitle}</p>
           </div>
 
           <div className="pricing-grid">
-            <div className="price-card animate-fade-up">
+            <div className="price-card reveal">
               <span className="popular-tag">FIRST TIMER TRIAL</span>
               <div>
                 <h3>{t.pricing.plan1Title}</h3>
@@ -526,7 +545,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="price-card animate-fade-up animate-delay-1">
+            <div className="price-card reveal delay-1">
               <span className="popular-tag">FIRST TIMER PRIVATE</span>
               <div>
                 <h3>{t.pricing.plan2Title}</h3>
@@ -543,7 +562,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="price-card animate-fade-up animate-delay-2">
+            <div className="price-card reveal delay-2">
               <div>
                 <h3>{t.pricing.plan3Title}</h3>
                 <div className="price-val">{t.pricing.plan3Price}</div>
@@ -556,7 +575,7 @@ export default function App() {
               </button>
             </div>
 
-            <div className="price-card popular animate-fade-up animate-delay-3">
+            <div className="price-card popular reveal delay-3">
               <span className="popular-tag">{t.pricing.popularBadge}</span>
               <div>
                 <h3>{t.pricing.plan4Title}</h3>
@@ -576,25 +595,25 @@ export default function App() {
       {/* Reviews Section */}
       <section id="reviews" className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.reviews.tag}</span>
             <h2 className="section-title">{t.reviews.title}</h2>
           </div>
 
           <div className="reviews-grid" style={{ marginTop: '40px' }}>
-            <div className="review-card animate-fade-up">
+            <div className="review-card reveal">
               <div className="stars">★★★★★</div>
               <p className="review-text">"{t.reviews.rev1}"</p>
               <div className="review-author">{t.reviews.rev1Author}</div>
             </div>
 
-            <div className="review-card animate-fade-up animate-delay-1">
+            <div className="review-card reveal delay-1">
               <div className="stars">★★★★★</div>
               <p className="review-text">"{t.reviews.rev2}"</p>
               <div className="review-author">{t.reviews.rev2Author}</div>
             </div>
 
-            <div className="review-card animate-fade-up animate-delay-2">
+            <div className="review-card reveal delay-2">
               <div className="stars">★★★★★</div>
               <p className="review-text">"{t.reviews.rev3}"</p>
               <div className="review-author">{t.reviews.rev3Author}</div>
@@ -606,12 +625,12 @@ export default function App() {
       {/* FAQ Section */}
       <section id="faq" className="section">
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag" style={{ textAlign: 'center', display: 'block' }}>{t.faq.tag}</span>
             <h2 className="section-title" style={{ textAlign: 'center' }}>{t.faq.title}</h2>
           </div>
 
-          <div className="faq-list animate-fade-up animate-delay-1" style={{ marginTop: '40px' }}>
+          <div className="faq-list reveal delay-1" style={{ marginTop: '40px' }}>
             {[
               { q: t.faq.q1, a: t.faq.a1 },
               { q: t.faq.q2, a: t.faq.a2 },
@@ -635,13 +654,13 @@ export default function App() {
       {/* Contact & Google Maps Section */}
       <section id="contact" className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div className="animate-fade-up">
+          <div className="reveal">
             <span className="section-tag">{t.contact.tag}</span>
             <h2 className="section-title">{t.contact.title}</h2>
             <p className="section-subtitle">{t.contact.subtitle}</p>
           </div>
 
-          <div className="contact-grid animate-fade-up animate-delay-1">
+          <div className="contact-grid reveal delay-1">
             <div className="contact-info">
               <div className="contact-item">
                 <div className="contact-icon"><MapPin size={22} /></div>
