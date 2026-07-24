@@ -16,7 +16,8 @@ import {
   ArrowRight, 
   Activity,
   Coffee,
-  Loader2
+  Loader2,
+  Menu
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -40,6 +41,7 @@ const getAssetUrl = (path) => {
 export default function App() {
   const [lang, setLang] = useState('en');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('tab1');
   const [openFaq, setOpenFaq] = useState(null);
   
@@ -66,7 +68,7 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
     );
 
     const revealElements = document.querySelectorAll('.reveal');
@@ -79,6 +81,7 @@ export default function App() {
     if (goal) setBookingData(prev => ({ ...prev, goal }));
     setIsSubmitted(false);
     setIsSubmitting(false);
+    setIsMobileMenuOpen(false);
     setIsModalOpen(true);
   };
 
@@ -148,7 +151,7 @@ export default function App() {
         {t.topBar}
       </div>
 
-      {/* Sleek Minimalist Navigation Header */}
+      {/* Sleek Header with Mobile Hamburger Menu */}
       <header className="header">
         <div className="container nav-row">
           <a href="#" className="logo-brand">
@@ -156,7 +159,7 @@ export default function App() {
             <span className="logo-subtitle">PILATES & YOGA • PHUKET</span>
           </a>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation Links */}
           <ul className="nav-menu">
             <li><a href="#atmosphere" className="nav-link">{t.nav.studio}</a></li>
             <li><a href="#classes" className="nav-link">{t.nav.classes}</a></li>
@@ -166,9 +169,10 @@ export default function App() {
             <li><a href="#contact" className="nav-link">{t.nav.contact}</a></li>
           </ul>
 
+          {/* Header Action Controls */}
           <div className="header-actions">
-            {/* Ultra Compact Language Switcher Pill */}
-            <div className="lang-switcher-header">
+            {/* Desktop Language Switcher Pill */}
+            <div className="lang-switcher-header desktop-only">
               <button 
                 className={`lang-btn-header ${lang === 'en' ? 'active' : ''}`}
                 onClick={() => setLang('en')}
@@ -195,16 +199,99 @@ export default function App() {
               </button>
             </div>
 
-            <a href="tel:+66945932245" className="phone-link">
-              <Phone size={13} />
-              <span>094-593-2245</span>
+            {/* Quick Call Icon Button */}
+            <a href="tel:+66945932245" className="phone-link" title="Call Us">
+              <Phone size={14} />
+              <span className="phone-text">094-593-2245</span>
             </a>
-            <button className="btn-primary" onClick={() => handleOpenBooking()}>
-              {t.nav.bookBtn}
+
+            {/* Book Trial Button */}
+            <button className="btn-primary btn-header-cta" onClick={() => handleOpenBooking()}>
+              <span>Book Trial</span>
+            </button>
+
+            {/* Hamburger Button for Mobile / Tablet */}
+            <button 
+              className="burger-btn mobile-only" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </header>
+
+      {/* Mobile Drawer Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="mobile-menu-drawer" onClick={e => e.stopPropagation()}>
+            <div className="mobile-menu-header">
+              <div className="logo-brand">
+                <span className="logo-title">MAISON 14</span>
+                <span className="logo-subtitle">PILATES & YOGA • PHUKET</span>
+              </div>
+              <button className="burger-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                <X size={22} />
+              </button>
+            </div>
+
+            {/* Language Switcher in Mobile Drawer */}
+            <div className="mobile-lang-row">
+              <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-muted)' }}>LANGUAGE:</span>
+              <div className="lang-switcher-header">
+                <button 
+                  className={`lang-btn-header ${lang === 'en' ? 'active' : ''}`}
+                  onClick={() => setLang('en')}
+                >
+                  EN
+                </button>
+                <button 
+                  className={`lang-btn-header ${lang === 'ru' ? 'active' : ''}`}
+                  onClick={() => setLang('ru')}
+                >
+                  RU
+                </button>
+                <button 
+                  className={`lang-btn-header ${lang === 'zh' ? 'active' : ''}`}
+                  onClick={() => setLang('zh')}
+                >
+                  ZH
+                </button>
+                <button 
+                  className={`lang-btn-header ${lang === 'th' ? 'active' : ''}`}
+                  onClick={() => setLang('th')}
+                >
+                  TH
+                </button>
+              </div>
+            </div>
+
+            <ul className="mobile-nav-links">
+              <li><a href="#atmosphere" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.studio}</a></li>
+              <li><a href="#classes" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.classes}</a></li>
+              <li><a href="#instructors" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.instructors}</a></li>
+              <li><a href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.pricing}</a></li>
+              <li><a href="#reviews" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.reviews}</a></li>
+              <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.contact}</a></li>
+            </ul>
+
+            <div className="mobile-drawer-footer">
+              <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking()}>
+                {t.hero.ctaTrial}
+              </button>
+              <div style={{ display: 'flex', gap: '12px', marginTop: '16px', justifyContent: 'center' }}>
+                <a href="tel:+66945932245" className="phone-link">
+                  <Phone size={14} /> +66 94 593 2245
+                </a>
+                <a href="https://wa.me/66945932245" target="_blank" rel="noreferrer" className="phone-link">
+                  <MessageCircle size={14} /> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="hero-section">
@@ -259,8 +346,8 @@ export default function App() {
                 <Coffee size={20} />
               </div>
               <div>
-                <strong style={{ display: 'block', fontSize: '14px' }}>Organic Tea & Relaxation Lounge</strong>
-                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Included after every session</span>
+                <strong style={{ display: 'block', fontSize: '13px' }}>Organic Tea & Relaxation Lounge</strong>
+                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Included after every session</span>
               </div>
             </div>
           </div>
@@ -754,7 +841,7 @@ export default function App() {
 
                   <div className="form-group">
                     <label className="form-label">{t.modal.step2Title}</label>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                    <div className="form-date-grid">
                       <input 
                         type="date" 
                         className="form-input"
