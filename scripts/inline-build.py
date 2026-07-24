@@ -14,7 +14,6 @@ html_path = os.path.join(dist_dir, 'index.html')
 js_path = os.path.join(dist_dir, 'assets', 'index.js')
 css_path = os.path.join(dist_dir, 'assets', 'index.css')
 
-
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
@@ -32,7 +31,7 @@ if os.path.exists(css_path):
         css_content = f.read()
     print(f'Read CSS: {len(css_content)} bytes')
 
-# Remove Google Fonts @import (doesn't work offline) - use system fallbacks
+# Remove Google Fonts @import (doesn't work offline)
 css_content = re.sub(
     r'@import\s+url\([^)]+fonts\.googleapis\.com[^)]*\)\s*;?',
     '',
@@ -48,28 +47,35 @@ css_content = re.sub(
     '',
     css_content
 )
-
-# Remove leading whitespace/newlines
 css_content = css_content.strip()
 
-# Replace <link rel="stylesheet"> with inlined <style>
+# Remove ALL external <link> tags (stylesheet + preconnect for Google Fonts)
 html = re.sub(
-    r'<link[^>]+rel=["\']stylesheet["\'][^>]*/?>',
+    r'<link[^>]+(?:rel=["\']stylesheet["\']|fonts\.googleapis\.com|fonts\.gstatic\.com)[^>]*/?>',
     '',
     html
 )
 
-# Replace <script type="module"> references with empty
+# Remove modulepreload links
+html = re.sub(r'<link[^>]+rel=["\']modulepreload["\'][^>]*/?>', '', html)
+
+# Remove ALL <script ...src=...> tags completely including closing </script>
+# This covers both self-closing and paired tags with src attributes
 html = re.sub(
-    r'<script\s+type=["\']module["\'][^>]*src=["\'][^"\']*["\'][^>]*/?>',
+    r'<script\b[^>]*\bsrc=["\'][^"\']*["\'][^>]*>\s*</script>',
     '',
     html
 )
+# Also remove any self-closing variant
 html = re.sub(
-    r'<link[^>]+rel=["\']modulepreload["\'][^>]*/?>',
+    r'<script\b[^>]*\bsrc=["\'][^"\']*["\'][^>]*/?>',
     '',
     html
 )
+
+# Remove any stray </script> closing tags that are NOT preceded by inline content
+# (i.e. standalone </script> with only whitespace before it on the line)
+html = re.sub(r'\n\s*</script>\s*\n', '\n', html)
 
 # Inject CSS before </head>
 if css_content:
@@ -81,12 +87,21 @@ if js_content:
     js_tag = f'\n  <script>\n{js_content}\n  </script>'
     html = html.replace('</body>', js_tag + '\n</body>')
 
+# Verify final structure
+script_open = html.count('<script')
+script_close = html.count('</script>')
+has_module = 'type="module"' in html
+has_import_meta = 'import.meta' in html
+print('Script open:', script_open, '| close:', script_close)
+print('type=module in output:', has_module)
+print('import.meta in output:', has_import_meta)
+
 # Write to dist/index.html and root index.html
 with open(html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 print(f'Written dist/index.html: {len(html)} bytes')
 
-root_html_path = os.path.join(os.path.dirname(dist_dir), 'index.html')
+root_html_path = os.path.join(project_root, 'index.html')
 with open(root_html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 print(f'Written root index.html: {len(html)} bytes')
