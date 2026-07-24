@@ -29,6 +29,14 @@ const InstagramIcon = ({ size = 18 }) => (
   </svg>
 );
 
+// Base asset path resolver for GitHub Pages / Vite
+const getAssetUrl = (path) => {
+  const base = import.meta.env.BASE_URL || './';
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return cleanBase + cleanPath;
+};
+
 export default function App() {
   const [lang, setLang] = useState('en');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,12 +99,12 @@ export default function App() {
     }
   };
 
-  // Gallery tabs images
+  // Gallery tabs images using relative URL resolver
   const galleryImages = {
-    tab1: "/images/hero.jpg",
-    tab2: "/images/reformer_detail.jpg",
-    tab3: "/images/instructor_jeab.jpg",
-    tab4: "/images/lounge_vibes.jpg"
+    tab1: getAssetUrl("images/hero.jpg"),
+    tab2: getAssetUrl("images/reformer_detail.jpg"),
+    tab3: getAssetUrl("images/instructor_jeab.jpg"),
+    tab4: getAssetUrl("images/lounge_vibes.jpg")
   };
 
   const groupScheduleSlots = [
@@ -222,7 +230,7 @@ export default function App() {
 
           <div className="hero-media">
             <img 
-              src="/images/hero.jpg" 
+              src={getAssetUrl("images/hero.jpg")} 
               alt="Maison 14 Pilates Studio Interior" 
               className="hero-img"
             />
@@ -461,7 +469,7 @@ export default function App() {
 
           <div className="instructors-grid">
             <div className="instructor-card">
-              <img src="/images/instructor_jeab.jpg" alt={t.instructors.inst1Name} className="instructor-img" />
+              <img src={getAssetUrl("images/instructor_jeab.jpg")} alt={t.instructors.inst1Name} className="instructor-img" />
               <div className="instructor-body">
                 <h3>{t.instructors.inst1Name}</h3>
                 <div className="instructor-role">{t.instructors.inst1Role}</div>
@@ -470,7 +478,7 @@ export default function App() {
             </div>
 
             <div className="instructor-card">
-              <img src="/images/instructor_anna.jpg" alt={t.instructors.inst2Name} className="instructor-img" />
+              <img src={getAssetUrl("images/instructor_anna.jpg")} alt={t.instructors.inst2Name} className="instructor-img" />
               <div className="instructor-body">
                 <h3>{t.instructors.inst2Name}</h3>
                 <div className="instructor-role">{t.instructors.inst2Role}</div>
@@ -689,7 +697,7 @@ export default function App() {
               <>
                 <h3 style={{ fontSize: '28px', marginBottom: '8px' }}>{t.modal.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '24px' }}>
-                  Direct notification will be sent to <strong>maxtyutin@gmail.com</strong>
+                  First Timer Group Trial: <strong>490 THB</strong> | Private Trial: <strong>1,590 THB</strong>
                 </p>
 
                 <form className="modal-form" onSubmit={handleFormSubmit}>
@@ -763,7 +771,7 @@ export default function App() {
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 size={16} className="animate-spin" /> Sending to maxtyutin@gmail.com...
+                        <Loader2 size={16} className="animate-spin" /> Sending reservation...
                       </>
                     ) : (
                       t.modal.submitBtn
@@ -776,10 +784,7 @@ export default function App() {
                 <CheckCircle2 size={56} style={{ color: 'var(--accent-green)', margin: '0 auto 16px' }} />
                 <h3 style={{ fontSize: '28px', marginBottom: '12px' }}>{t.modal.successTitle}</h3>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>
-                  {t.modal.successDesc} <br />
-                  <span style={{ fontSize: '12px', color: 'var(--accent-warm)' }}>
-                    (Notification sent to maxtyutin@gmail.com)
-                  </span>
+                  {t.modal.successDesc}
                 </p>
                 <button className="btn-primary" onClick={() => setIsModalOpen(false)}>
                   {t.modal.closeBtn}
