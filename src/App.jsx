@@ -742,7 +742,7 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="price-card popular">
+                <div className="price-card">
                   <span className="popular-tag">{t.pricing.popularBadge}</span>
                   <div>
                     <h3>{t.pricing.groupPlan3Title}</h3>
@@ -751,7 +751,7 @@ export default function App() {
                       {t.pricing.groupPlan3Sub}
                     </p>
                   </div>
-                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 20 Sessions (11,990 THB)')}>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 20 Sessions (11,990 THB)')}>
                     {t.pricing.btnSelect}
                   </button>
                 </div>
@@ -805,7 +805,7 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="price-card popular">
+                <div className="price-card">
                   <span className="popular-tag">{t.pricing.popularBadge}</span>
                   <div>
                     <h3>{t.pricing.privatePlan2Title}</h3>
@@ -814,7 +814,7 @@ export default function App() {
                       {t.pricing.privatePlan2Sub}
                     </p>
                   </div>
-                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Private 1:1 - 20 Sessions (30,900 THB)')}>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Private 1:1 - 20 Sessions (30,900 THB)')}>
                     {t.pricing.btnSelect}
                   </button>
                 </div>
@@ -868,7 +868,7 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="price-card popular">
+                <div className="price-card">
                   <span className="popular-tag">{t.pricing.popularBadge}</span>
                   <div>
                     <h3>{t.pricing.duetPlan2Title}</h3>
@@ -877,7 +877,7 @@ export default function App() {
                       {t.pricing.duetPlan2Sub}
                     </p>
                   </div>
-                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Duet 2:1 - 10 Sessions (20,900 THB)')}>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Duet 2:1 - 10 Sessions (20,900 THB)')}>
                     {t.pricing.btnSelect}
                   </button>
                 </div>
