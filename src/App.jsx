@@ -1119,10 +1119,21 @@ export default function App() {
                       value={bookingData.goal}
                       onChange={e => setBookingData({ ...bookingData, goal: e.target.value })}
                     >
-                      <option value={t.modal.goal1}>{t.modal.goal1}</option>
-                      <option value={t.modal.goal2}>{t.modal.goal2}</option>
-                      <option value={t.modal.goal3}>{t.modal.goal3}</option>
-                      <option value={t.modal.goal4}>{t.modal.goal4}</option>
+                      {[
+                        t.modal.goal1,
+                        t.modal.goal2,
+                        t.modal.goal3,
+                        t.modal.goal4,
+                        t.modal.goal5,
+                        t.modal.goal6,
+                        t.modal.goal7,
+                        t.modal.goal8,
+                        t.modal.goal9,
+                        t.modal.goal10,
+                        t.modal.goal11
+                      ].map((goalOption, idx) => (
+                        <option key={idx} value={goalOption}>{goalOption}</option>
+                      ))}
                     </select>
                   </div>
 
