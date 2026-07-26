@@ -430,6 +430,14 @@ h1, h2, h3, h4, .font-serif {
   white-space: nowrap;
 }
 
+.btn-secondary:hover {
+  background: var(--accent-dark);
+  color: #FFFFFF;
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(43, 34, 27, 0.2);
+}
+
 /* Sections */
 .section {
   padding: 90px 0;
@@ -893,6 +901,19 @@ h1, h2, h3, h4, .font-serif {
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transition-smooth);
+}
+
+.price-card:hover {
+  border-color: var(--accent-warm);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.price-card:hover .btn-secondary {
+  background: var(--accent-dark);
+  color: #FFFFFF;
+  border-color: var(--accent-dark);
+  box-shadow: 0 8px 22px rgba(43, 34, 27, 0.2);
 }
 
 .price-card.popular {
