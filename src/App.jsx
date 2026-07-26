@@ -1028,19 +1028,28 @@ export default function App() {
             </div>
 
             <div className="map-card">
-              <MapPin size={42} style={{ color: 'var(--accent-warm)', marginBottom: '12px' }} />
-              <strong style={{ fontSize: '18px', display: 'block', marginBottom: '8px' }}>Maison 14 Pilates & Yoga</strong>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px' }}>
-                274/1 Yaowarad Rd, Tambon Ratsada, Mueang Phuket 83000, Thailand
-              </p>
-              <a 
-                href="https://maps.app.goo.gl/iMkMAZ2x63JubA7V7?g_st=ic" 
-                target="_blank" 
-                rel="noreferrer"
-                className="btn-primary"
-              >
-                {t.contact.openMap}
-              </a>
+              <iframe
+                title="Maison 14 Pilates Location Map"
+                src="https://maps.google.com/maps?q=274%2F1%20Yaowarad%20Rd%2C%20Tambon%20Ratsada%2C%20Mueang%20Phuket%2083000%2C%20Thailand&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div className="map-card-footer">
+                <div>
+                  <strong style={{ fontSize: '14px', display: 'block', color: 'var(--text-dark)' }}>Maison 14 Pilates & Yoga</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>274/1 Yaowarad Rd, Ratsada, Phuket 83000</span>
+                </div>
+                <a 
+                  href="https://maps.app.goo.gl/iMkMAZ2x63JubA7V7?g_st=ic" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="btn-secondary"
+                  style={{ padding: '6px 14px', fontSize: '12px', whiteSpace: 'nowrap' }}
+                >
+                  {t.contact.openMap}
+                </a>
+              </div>
             </div>
           </div>
         </div>
