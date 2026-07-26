@@ -43,6 +43,7 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('tab1');
+  const [activePricingTab, setActivePricingTab] = useState('group');
   const [openFaq, setOpenFaq] = useState(null);
   
   // Booking Form State
@@ -75,7 +76,7 @@ export default function App() {
     revealElements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [activePricingTab]);
 
   const handleOpenBooking = (goal = null) => {
     if (goal) setBookingData(prev => ({ ...prev, goal }));
@@ -133,7 +134,8 @@ export default function App() {
     { time: "08:00 AM", title: t.programs.prog1Title, seats: 3 },
     { time: "09:00 AM", title: t.programs.prog1Title, seats: 2 },
     { time: "10:00 AM", title: t.programs.prog1Title, seats: 4 },
-    { time: "04:00 PM", title: t.programs.prog1Title, seats: 2 },
+    { time: "11:00 AM", title: t.programs.prog1Title, seats: 5 },
+    { time: "05:00 PM", title: t.programs.prog1Title, seats: 2 },
     { time: "06:00 PM", title: t.programs.prog1Title, seats: 1 },
     { time: "07:00 PM", title: t.programs.prog1Title, seats: 3 }
   ];
@@ -476,6 +478,37 @@ export default function App() {
         </div>
       </section>
 
+      {/* Our Equipment Section */}
+      <section id="equipment" className="section" style={{ background: 'var(--bg-subtle)' }}>
+        <div className="container">
+          <div className="reveal">
+            <span className="section-tag">{t.equipment.tag}</span>
+            <h2 className="section-title">{t.equipment.title}</h2>
+            <p className="section-subtitle">{t.equipment.subtitle}</p>
+          </div>
+
+          <div className="equipment-grid" style={{ marginTop: '40px' }}>
+            <div className="why-card reveal">
+              <div className="why-icon"><Activity size={26} /></div>
+              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.reformerTitle}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.reformerDesc}</p>
+            </div>
+
+            <div className="why-card reveal delay-1">
+              <div className="why-icon"><Sparkles size={26} /></div>
+              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.cadillacTitle}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.cadillacDesc}</p>
+            </div>
+
+            <div className="why-card reveal delay-2">
+              <div className="why-icon"><HeartHandshake size={26} /></div>
+              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.ladderBarrelTitle}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.ladderBarrelDesc}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Classes & Schedule Section */}
       <section id="classes" className="section">
         <div className="container">
@@ -655,67 +688,230 @@ export default function App() {
             <p className="section-subtitle">{t.pricing.subtitle}</p>
           </div>
 
-          <div className="pricing-grid">
-            <div className="price-card reveal">
-              <span className="popular-tag">{t.pricing.firstTimerTrial}</span>
-              <div>
-                <h3>{t.pricing.plan1Title}</h3>
-                <div className="price-val">
-                  {t.pricing.plan1Price}
-                  <span className="price-old">{t.pricing.plan1Old}</span>
+          {/* Pricing Tabs Switcher */}
+          <div className="pricing-tabs-container reveal">
+            <div className="pricing-tabs">
+              <button 
+                className={`pricing-tab-btn ${activePricingTab === 'group' ? 'active' : ''}`}
+                onClick={() => setActivePricingTab('group')}
+              >
+                {t.pricing.tabGroup}
+              </button>
+              <button 
+                className={`pricing-tab-btn ${activePricingTab === 'private' ? 'active' : ''}`}
+                onClick={() => setActivePricingTab('private')}
+              >
+                {t.pricing.tabPrivate}
+              </button>
+              <button 
+                className={`pricing-tab-btn ${activePricingTab === 'duet' ? 'active' : ''}`}
+                onClick={() => setActivePricingTab('duet')}
+              >
+                {t.pricing.tabDuet}
+              </button>
+            </div>
+          </div>
+
+          {/* Group Reformer Pricing Tab */}
+          {activePricingTab === 'group' && (
+            <div>
+              <div className="pricing-grid">
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.groupPlan1Title}</h3>
+                    <div className="price-val">{t.pricing.groupPlan1Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.groupPlan1Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 1 Session (790 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
                 </div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                  {t.pricing.plan1Sub}
-                </p>
-              </div>
-              <button className="btn-primary" onClick={() => handleOpenBooking('First Timer Group Reformer (490 THB)')}>
-                {t.pricing.btnSelect}
-              </button>
-            </div>
 
-            <div className="price-card reveal delay-1">
-              <span className="popular-tag">{t.pricing.firstTimerPrivate}</span>
-              <div>
-                <h3>{t.pricing.plan2Title}</h3>
-                <div className="price-val">
-                  {t.pricing.plan2Price}
-                  <span className="price-old">{t.pricing.plan2Old}</span>
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.groupPlan2Title}</h3>
+                    <div className="price-val">{t.pricing.groupPlan2Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.groupPlan2Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 10 Sessions (6,490 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
                 </div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                  {t.pricing.plan2Sub}
-                </p>
-              </div>
-              <button className="btn-primary" onClick={() => handleOpenBooking('First Timer Private 1:1 (1,590 THB)')}>
-                {t.pricing.btnSelect}
-              </button>
-            </div>
 
-            <div className="price-card reveal delay-2">
-              <div>
-                <h3>{t.pricing.plan3Title}</h3>
-                <div className="price-val">{t.pricing.plan3Price}</div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                  {t.pricing.plan3Sub}
-                </p>
-              </div>
-              <button className="btn-secondary" onClick={() => handleOpenBooking('10-Class Group Pass (6,000 THB)')}>
-                {t.pricing.btnSelect}
-              </button>
-            </div>
+                <div className="price-card popular">
+                  <span className="popular-tag">{t.pricing.popularBadge}</span>
+                  <div>
+                    <h3>{t.pricing.groupPlan3Title}</h3>
+                    <div className="price-val">{t.pricing.groupPlan3Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.groupPlan3Sub}
+                    </p>
+                  </div>
+                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 20 Sessions (11,990 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
 
-            <div className="price-card popular reveal delay-3">
-              <span className="popular-tag">{t.pricing.popularBadge}</span>
-              <div>
-                <h3>{t.pricing.plan4Title}</h3>
-                <div className="price-val">{t.pricing.plan4Price}</div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                  {t.pricing.plan4Sub}
-                </p>
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.groupPlan4Title}</h3>
+                    <div className="price-val">{t.pricing.groupPlan4Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.groupPlan4Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Group Pass - 30 Sessions (16,490 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
               </div>
-              <button className="btn-primary" onClick={() => handleOpenBooking('20-Class Group Pass (10,000 THB)')}>
-                {t.pricing.btnSelect}
-              </button>
+
+              {/* Group Metadata Footer */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '40px', padding: '24px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.equipmentTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.equipment.reformerTitle} - {t.equipment.reformerDesc}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.amenitiesTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.packagesInclude}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.programs.tag}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.limitedGroup} • {t.pricing.smallClasses} • {t.pricing.certifiedInstructors}</span>
+                </div>
+              </div>
             </div>
+          )}
+
+          {/* Private 1:1 Pricing Tab */}
+          {activePricingTab === 'private' && (
+            <div>
+              <div className="pricing-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.privatePlan1Title}</h3>
+                    <div className="price-val">{t.pricing.privatePlan1Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.privatePlan1Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Private 1:1 - 10 Sessions (16,200 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
+
+                <div className="price-card popular">
+                  <span className="popular-tag">{t.pricing.popularBadge}</span>
+                  <div>
+                    <h3>{t.pricing.privatePlan2Title}</h3>
+                    <div className="price-val">{t.pricing.privatePlan2Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.privatePlan2Sub}
+                    </p>
+                  </div>
+                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Private 1:1 - 20 Sessions (30,900 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
+
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.privatePlan3Title}</h3>
+                    <div className="price-val">{t.pricing.privatePlan3Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.privatePlan3Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Private 1:1 - 30 Sessions (44,400 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
+              </div>
+
+              {/* Private Metadata Footer */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '40px', padding: '24px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.equipmentTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.equipment.reformerTitle}, {t.equipment.cadillacTitle}, {t.equipment.ladderBarrelTitle}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.amenitiesTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.packagesInclude}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.programs.tag}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.privateNote} • {t.pricing.certifiedInstructors}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Duet Class Pricing Tab */}
+          {activePricingTab === 'duet' && (
+            <div>
+              <div className="pricing-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: '800px', margin: '0 auto' }}>
+                <div className="price-card">
+                  <div>
+                    <h3>{t.pricing.duetPlan1Title}</h3>
+                    <div className="price-val">{t.pricing.duetPlan1Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.duetPlan1Sub}
+                    </p>
+                  </div>
+                  <button className="btn-secondary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Duet 2:1 - 5 Sessions (10,900 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
+
+                <div className="price-card popular">
+                  <span className="popular-tag">{t.pricing.popularBadge}</span>
+                  <div>
+                    <h3>{t.pricing.duetPlan2Title}</h3>
+                    <div className="price-val">{t.pricing.duetPlan2Price}</div>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                      {t.pricing.duetPlan2Sub}
+                    </p>
+                  </div>
+                  <button className="btn-primary" style={{ width: '100%' }} onClick={() => handleOpenBooking('Duet 2:1 - 10 Sessions (20,900 THB)')}>
+                    {t.pricing.btnSelect}
+                  </button>
+                </div>
+              </div>
+
+              {/* Duet Metadata Footer */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '40px', padding: '24px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.equipmentTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.equipment.reformerTitle}, {t.equipment.cadillacTitle}, {t.equipment.ladderBarrelTitle}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.pricing.amenitiesTitle}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.packagesInclude}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px' }}>{t.programs.tag}</strong>
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.pricing.duetNote} • {t.pricing.certifiedInstructors}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Trial Promo Callout Banner */}
+          <div className="reveal" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px', padding: '28px 36px', background: 'linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-subtle) 100%)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--accent-warm)' }}>
+            <div>
+              <strong style={{ display: 'block', fontSize: '18px', color: 'var(--text-primary)', marginBottom: '4px' }}>{t.pricing.trialHeader}</strong>
+              <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
+                {t.pricing.trialGroupText} &nbsp;|&nbsp; {t.pricing.trialPrivateText}
+              </span>
+            </div>
+            <button className="btn-primary" style={{ marginTop: '10px' }} onClick={() => handleOpenBooking()}>
+              {t.pricing.trialButton}
+            </button>
           </div>
         </div>
       </section>
@@ -898,10 +1094,11 @@ export default function App() {
                         <option value="08:00 AM">08:00 AM ({t.modal.group})</option>
                         <option value="09:00 AM">09:00 AM ({t.modal.group})</option>
                         <option value="10:00 AM">10:00 AM ({t.modal.group})</option>
+                        <option value="11:00 AM">11:00 AM ({t.modal.group})</option>
                         <option value="01:00 PM">01:00 PM ({t.modal.private})</option>
                         <option value="02:00 PM">02:00 PM ({t.modal.private})</option>
                         <option value="03:00 PM">03:00 PM ({t.modal.private})</option>
-                        <option value="04:00 PM">04:00 PM ({t.modal.group})</option>
+                        <option value="05:00 PM">05:00 PM ({t.modal.group})</option>
                         <option value="06:00 PM">06:00 PM ({t.modal.group})</option>
                         <option value="07:00 PM">07:00 PM ({t.modal.group})</option>
                       </select>
