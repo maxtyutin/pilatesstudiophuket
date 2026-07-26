@@ -488,22 +488,46 @@ export default function App() {
           </div>
 
           <div className="equipment-grid" style={{ marginTop: '40px' }}>
-            <div className="why-card reveal">
-              <div className="why-icon"><Activity size={26} /></div>
-              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.reformerTitle}</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.reformerDesc}</p>
+            <div className="equipment-card reveal">
+              <div className="equipment-img-wrapper">
+                <img 
+                  src={getAssetUrl("images/eq_reformer.jpg")} 
+                  alt={t.equipment.reformerTitle} 
+                  className="equipment-img"
+                />
+              </div>
+              <div className="equipment-card-body">
+                <h3>{t.equipment.reformerTitle}</h3>
+                <p>{t.equipment.reformerDesc}</p>
+              </div>
             </div>
 
-            <div className="why-card reveal delay-1">
-              <div className="why-icon"><Sparkles size={26} /></div>
-              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.cadillacTitle}</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.cadillacDesc}</p>
+            <div className="equipment-card reveal delay-1">
+              <div className="equipment-img-wrapper">
+                <img 
+                  src={getAssetUrl("images/eq_cadillac.jpg")} 
+                  alt={t.equipment.cadillacTitle} 
+                  className="equipment-img"
+                />
+              </div>
+              <div className="equipment-card-body">
+                <h3>{t.equipment.cadillacTitle}</h3>
+                <p>{t.equipment.cadillacDesc}</p>
+              </div>
             </div>
 
-            <div className="why-card reveal delay-2">
-              <div className="why-icon"><HeartHandshake size={26} /></div>
-              <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>{t.equipment.ladderBarrelTitle}</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6' }}>{t.equipment.ladderBarrelDesc}</p>
+            <div className="equipment-card reveal delay-2">
+              <div className="equipment-img-wrapper">
+                <img 
+                  src={getAssetUrl("images/eq_ladder_barrel.jpg")} 
+                  alt={t.equipment.ladderBarrelTitle} 
+                  className="equipment-img"
+                />
+              </div>
+              <div className="equipment-card-body">
+                <h3>{t.equipment.ladderBarrelTitle}</h3>
+                <p>{t.equipment.ladderBarrelDesc}</p>
+              </div>
             </div>
           </div>
         </div>
