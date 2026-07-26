@@ -605,6 +605,7 @@ h1, h2, h3, h4, .font-serif {
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
+  padding: 0 !important;
 }
 
 .equipment-card:hover {
@@ -615,16 +616,19 @@ h1, h2, h3, h4, .font-serif {
 
 .equipment-img-wrapper {
   width: 100%;
-  height: 240px;
+  height: 260px;
   background: #FAF7F2;
   overflow: hidden;
   border-bottom: 1px solid var(--border-light);
+  margin: 0;
+  padding: 0;
 }
 
 .equipment-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
