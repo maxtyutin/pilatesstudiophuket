@@ -512,12 +512,14 @@ export default function App() {
       {/* Classes & Schedule Section */}
       <section id="classes" className="section">
         <div className="container">
-          {/* Schedule Table */}
-          <div className="schedule-container reveal">
+          <div className="reveal">
             <span className="section-tag">{t.schedule.tag}</span>
-            <h3 style={{ fontSize: '32px', marginBottom: '8px' }}>{t.schedule.title}</h3>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '32px' }}>{t.schedule.subtitle}</p>
+            <h2 className="section-title">{t.schedule.title}</h2>
+            <p className="section-subtitle">{t.schedule.subtitle}</p>
+          </div>
 
+          {/* Schedule Table */}
+          <div className="schedule-container reveal" style={{ marginTop: '40px' }}>
             <div className="schedule-columns">
               {/* Group Reformer Schedule */}
               <div>
@@ -532,16 +534,13 @@ export default function App() {
                         <div className="slot-time">{slot.time}</div>
                         <div className="slot-title">{slot.title}</div>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div className="slot-seats">{slot.seats} {t.schedule.seatsLeft}</div>
-                        <button 
-                          className="btn-primary" 
-                          style={{ padding: '7px 16px', fontSize: '12px', marginTop: '6px' }}
-                          onClick={() => handleOpenBooking(`Group Reformer (${slot.time})`)}
-                        >
-                          {t.schedule.reserveBtn}
-                        </button>
-                      </div>
+                      <button 
+                        className="btn-primary" 
+                        style={{ padding: '8px 18px', fontSize: '12px' }}
+                        onClick={() => handleOpenBooking(`Group Reformer (${slot.time})`)}
+                      >
+                        {t.schedule.reserveBtn}
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -561,16 +560,13 @@ export default function App() {
                         <div className="slot-title">{slot.title}</div>
                         <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{t.schedule.reformerCadillac}</div>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div className="slot-seats" style={{ color: 'var(--accent-warm)' }}>{t.schedule.vipSession}</div>
-                        <button 
-                          className="btn-primary" 
-                          style={{ padding: '7px 16px', fontSize: '12px', marginTop: '6px' }}
-                          onClick={() => handleOpenBooking(`Private 1:1 (${slot.time})`)}
-                        >
-                          {t.schedule.reserveBtn}
-                        </button>
-                      </div>
+                      <button 
+                        className="btn-primary" 
+                        style={{ padding: '8px 18px', fontSize: '12px' }}
+                        onClick={() => handleOpenBooking(`Private 1:1 (${slot.time})`)}
+                      >
+                        {t.schedule.reserveBtn}
+                      </button>
                     </div>
                   ))}
                 </div>
