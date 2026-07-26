@@ -128,4 +128,13 @@ if os.path.exists(assets_dir):
     shutil.rmtree(assets_dir)
     print('Cleaned up assets directory from dist/')
 
+# Copy public/images to root images/ for standalone and GitHub Pages hosting
+public_images_dir = os.path.join(project_root, 'public', 'images')
+root_images_dir = os.path.join(project_root, 'images')
+if os.path.exists(public_images_dir):
+    if os.path.exists(root_images_dir):
+        shutil.rmtree(root_images_dir)
+    shutil.copytree(public_images_dir, root_images_dir)
+    print('Copied public/images to root images/')
+
 print('Done! Single-file HTML ready for offline file:// opening.')
