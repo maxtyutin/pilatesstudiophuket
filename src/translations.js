@@ -126,6 +126,7 @@ export const translations = {
       trialGroupText: "Group Reformer Trial • 490 THB",
       trialPrivateText: "Private 1:1 Trial • 1,590 THB",
       trialButton: "Book Trial Option",
+      popularBadge: "MOST POPULAR",
       
       // Group plans
       groupPlan1Title: "One Time",
@@ -372,6 +373,7 @@ export const translations = {
       trialGroupText: "Пробное групповое занятие • 490 THB",
       trialPrivateText: "Пробное персональное занятие • 1,590 THB",
       trialButton: "Записаться на пробный",
+      popularBadge: "MOST POPULAR",
       
       // Group plans
       groupPlan1Title: "Разовое",
@@ -618,6 +620,7 @@ export const translations = {
       trialGroupText: "团课首次体验 • 490 THB",
       trialPrivateText: "私教首次体验 • 1,590 THB",
       trialButton: "预约首次体验",
+      popularBadge: "MOST POPULAR",
       
       // Group plans
       groupPlan1Title: "单次课",
@@ -864,6 +867,7 @@ export const translations = {
       trialGroupText: "ทดลองเรียนคลาสกลุ่ม • 490 THB",
       trialPrivateText: "ทดลองเรียนส่วนตัว • 1,590 THB",
       trialButton: "จองคลาสทดลองเรียน",
+      popularBadge: "MOST POPULAR",
       
       // Group plans
       groupPlan1Title: "ครั้งเดียว (One Time)",
