@@ -957,11 +957,33 @@ h1, h2, h3, h4, .font-serif {
   gap: 24px;
 }
 
+@media (max-width: 992px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .review-card {
   background: var(--bg-card);
-  padding: 32px;
+  padding: 32px 28px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition-smooth);
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-warm);
 }
 
 .stars {
@@ -973,14 +995,40 @@ h1, h2, h3, h4, .font-serif {
 .review-text {
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
   font-style: italic;
 }
 
-.review-author {
-  font-size: 13px;
+.review-user-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-warm);
+  flex-shrink: 0;
+}
+
+.review-author-name {
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.review-author-role {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
 }
 
 /* FAQ Accordion */

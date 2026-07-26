@@ -925,23 +925,64 @@ export default function App() {
           </div>
 
           <div className="reviews-grid" style={{ marginTop: '40px' }}>
-            <div className="review-card reveal">
-              <div className="stars">★★★★★</div>
-              <p className="review-text">"{t.reviews.rev1}"</p>
-              <div className="review-author">{t.reviews.rev1Author}</div>
-            </div>
-
-            <div className="review-card reveal delay-1">
-              <div className="stars">★★★★★</div>
-              <p className="review-text">"{t.reviews.rev2}"</p>
-              <div className="review-author">{t.reviews.rev2Author}</div>
-            </div>
-
-            <div className="review-card reveal delay-2">
-              <div className="stars">★★★★★</div>
-              <p className="review-text">"{t.reviews.rev3}"</p>
-              <div className="review-author">{t.reviews.rev3Author}</div>
-            </div>
+            {[
+              {
+                text: t.reviews.rev1,
+                name: t.reviews.rev1Name,
+                role: t.reviews.rev1Role,
+                avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
+                delay: ""
+              },
+              {
+                text: t.reviews.rev2,
+                name: t.reviews.rev2Name,
+                role: t.reviews.rev2Role,
+                avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200",
+                delay: "delay-1"
+              },
+              {
+                text: t.reviews.rev3,
+                name: t.reviews.rev3Name,
+                role: t.reviews.rev3Role,
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+                delay: "delay-2"
+              },
+              {
+                text: t.reviews.rev4,
+                name: t.reviews.rev4Name,
+                role: t.reviews.rev4Role,
+                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
+                delay: ""
+              },
+              {
+                text: t.reviews.rev5,
+                name: t.reviews.rev5Name,
+                role: t.reviews.rev5Role,
+                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
+                delay: "delay-1"
+              },
+              {
+                text: t.reviews.rev6,
+                name: t.reviews.rev6Name,
+                role: t.reviews.rev6Role,
+                avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200",
+                delay: "delay-2"
+              }
+            ].map((rev, idx) => (
+              <div key={idx} className={`review-card reveal ${rev.delay}`}>
+                <div>
+                  <div className="stars">★★★★★</div>
+                  <p className="review-text">"{rev.text}"</p>
+                </div>
+                <div className="review-user-info">
+                  <img src={rev.avatar} alt={rev.name} className="review-avatar" />
+                  <div>
+                    <div className="review-author-name">{rev.name}</div>
+                    <div className="review-author-role">{rev.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
